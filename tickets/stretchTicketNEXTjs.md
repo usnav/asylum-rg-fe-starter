@@ -33,7 +33,7 @@ For a step-by-step guide on how to transition from React to Next.js, refer to: `
 
 ## Deliverables 
 
-Submit the following for review:
+Want us to review it? Post the following on labs-web:
 
 - Link to your forked repo with the migrated Next.js codebase.
 - Link to a Loom video demonstrating the successful migration and showcasing the application's functionality post-migration.
