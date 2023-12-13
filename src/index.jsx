@@ -7,6 +7,26 @@ import {
   Switch,
 } from 'react-router-dom';
 
+//importing auth0
+
+import { useAuth0 } from '@auth0/auth0-react';
+
+// importing auth0providerwithhistory component
+
+import Auth0ProviderWithHistory from './auth0-provider-with-history';
+
+// importing profile component
+
+import Profile from './profile';
+
+//importing Loading Component
+
+import LoadingComponent from './components/common/LoadingComponent';
+
+// importing protectedroute component
+
+//import ProtectedRoute from './protected-route';
+
 import 'antd/dist/antd.less';
 import { NotFoundPage } from './components/pages/NotFound';
 import { LandingPage } from './components/pages/Landing';
@@ -29,9 +49,11 @@ const store = configureStore({ reducer: reducer });
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <Auth0ProviderWithHistory>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Auth0ProviderWithHistory>
     </Provider>
   </Router>,
   document.getElementById('root')
@@ -39,6 +61,13 @@ ReactDOM.render(
 
 export function App() {
   const { Footer, Header } = Layout;
+  // loading component
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <LoadingComponent message="Loading, please wait..." />;
+  }
+
   return (
     <Layout>
       <Header
@@ -54,6 +83,7 @@ export function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
+        <Route path="/profile" component={Profile} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer

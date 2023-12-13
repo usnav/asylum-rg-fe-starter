@@ -71,6 +71,7 @@ function GraphWrapper(props) {
         |           to: <year_end>,                                                       |
         |           office: <office>,       [ <-- this one is optional! when    ]         |
         |         },                        [ querying by `all offices` there's ]         |
+        
         |       })                          [ no `office` param in the query    ]         |
         |                                                                                 |
           _                                                                             _
